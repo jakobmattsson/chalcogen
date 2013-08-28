@@ -1,0 +1,9 @@
+lib
+.*
+npm-debug.log
+
+!.bowerrc
+!.travis.yml
+!.gitignore
+!.npmignore
+
