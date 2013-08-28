@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var fs = require('fs');;
+var fs = require('fs');
 var path = require('path');
 var nconf = require('nconf');
 var _ = require('underscore');
@@ -59,12 +59,13 @@ if (argv.platform == 'local') {
   });
 } else if (argv.platform == 'saucelabs') {
   sauce.run({
-    environments: testSpec.environments.slice(0, 2),
+    environments: testSpec.environments,
     username: process.env.CI_COMMITTER_USERNAME || process.env.USERNAME || process.env.USER,
     projectName: pack.name,
     branchName: process.env.CI_BRANCH, // todo: add a method to extract this locally,
     buildUrl: process.env.CI_BUILD_URL,
     timeout: testSpec.timeout,
+    url: "http://" + testSpec.remoteDomain + testSpec.path,
     verbose: true,
     parallelism: 2,
     sauceUsername: nconf.get('saucelabs:username'),
