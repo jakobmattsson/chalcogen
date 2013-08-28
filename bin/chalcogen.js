@@ -5,9 +5,9 @@ var path = require('path');
 var nconf = require('nconf');
 var _ = require('underscore');
 var optimist = require('optimist');
-var wdMocha = require('./driver');
-var sauce = require('./runner-saucelabs');
-var localCore = require('./runner-localOpra');
+var wdMocha = require('../lib/driver');
+var sauce = require('../lib/runner-saucelabs');
+var localCore = require('../lib/runner-localOpra');
 
 var argv = optimist
   .usage('Runs mocha tests using selenium')
