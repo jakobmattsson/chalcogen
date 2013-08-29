@@ -23,7 +23,7 @@
     "test": "mocha --compilers coffee:coffee-script --recursive spec"
   },
   "peerDependencies": {
-    "opra": "^0.17.2"
+    "opra": ">= 0.17.2"
   },
   "dependencies": {
     "nconf": "^0.6.7",
