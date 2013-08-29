@@ -1,9 +1,8 @@
 saucelabs = require 'saucelabs'
 randomName = require 'random-name'
 _ = require 'underscore'
-wdMocha = require './driver'
 
-exports.run = ({ environments, username, projectName, branchName, buildUrl, url, timeout, verbose, parallelism, sauceUsername, saucePassword }, callback) ->
+exports.run = (wdMocha, { environments, username, projectName, branchName, buildUrl, url, timeout, verbose, parallelism, sauceUsername, saucePassword }, callback) ->
 
   if !sauceUsername || !saucePassword
     return callback(new Error("Missing username and/or password"))
