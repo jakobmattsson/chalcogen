@@ -16,3 +16,21 @@ Usage
 -----
 
 Until if find time to write proper documentation, start with running `chalcogen --help` and go from there.
+
+
+ToDo
+----
+
+* Support running on a local webserver, not depending on opra
+* Support for browserstack
+* Separate all four platforms (local, opra, browserstack, saucelabs) to plugins
+* Get rid of dependency on global saucedUp-variable in the tests
+* Write tests
+* Get tests up and running for:
+  * iPhone
+  * iPad
+  * IE6
+  * IE7
+  * Opera
+  * Opera Mobile
+  * Android
