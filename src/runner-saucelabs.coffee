@@ -11,7 +11,7 @@ exports.run = (wdMocha, { environments, username, projectName, branchName, build
   buildName = randomName.first()
 
   wdMocha.run {
-    setups: environments.map (x) -> _.extend({}, x, {
+    setups: environments.map (x) -> _.extend(_(x).pick('browserName', 'platform', 'version'), {
       name: randomName.first()
       build: buildName
       tags: [username, projectName, branchName].filter (x) -> x
