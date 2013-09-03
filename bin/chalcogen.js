@@ -60,6 +60,7 @@ if (argv.platforms) {
   console.log("  local: Run test using local selenium browsers")
   console.log("  opra: Run test using an OPRA-server and local selenium browsers")
   console.log("  saucelabs: Run tests on saucelabs.com")
+  console.log("  browserstack: Run tests on browserstack.com")
   console.log()
   return;
 }
@@ -101,6 +102,24 @@ if (argv.platform == 'opra') {
     parallelism: nconf.get('chalcogen:parallelism'),
     sauceUsername: nconf.get('saucelabs:username'),
     saucePassword: nconf.get('saucelabs:password')
+  }, function(err, res) {
+    process.exit(wdMocha.finalLog(err, res) ? 0 : 1)
+  });
+} else if (argv.platform == 'browserstack') {
+  var sauce = require('../lib/runner-browserstack');
+  sauce.run(wdMocha, {
+    environments: nconf.get('chalcogen:environments'),
+    username: nconf.get('chalcogen:username') || nconf.get('CI_COMMITTER_USERNAME') || nconf.get('USERNAME') || nconf.get('USER'),
+    projectName: nconf.get('name'),
+    branchName: nconf.get('chalcogen:branch') || nconf.get('CI_BRANCH'),
+    buildUrl: nconf.get('chalcogen:buildUrl') || nconf.get('CI_BUILD_URL'),
+    timeout: nconf.get('chalcogen:timeout'),
+    url: "http://" + nconf.get('chalcogen:domain') + nconf.get('chalcogen:path'),
+    verbose: !nconf.get('chalcogen:silent'),
+    parallelism: nconf.get('chalcogen:parallelism'),
+    visualLogs: false,
+    browserstackUsername: nconf.get('browserstack:username'),
+    browserstackPassword: nconf.get('browserstack:password')
   }, function(err, res) {
     process.exit(wdMocha.finalLog(err, res) ? 0 : 1)
   });
