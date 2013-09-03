@@ -21,6 +21,7 @@ Until if find time to write proper documentation, start with running `chalcogen 
 ToDo
 ----
 
+* Better logging texts. In particular reporting browser version/platforms in final statement.
 * Separate all four platforms (local, opra, browserstack, saucelabs) to plugins
 * Write tests
 * Get tests up and running for:
