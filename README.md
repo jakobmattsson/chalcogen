@@ -24,7 +24,6 @@ ToDo
 * Support running on a local webserver, not depending on opra
 * Support for browserstack
 * Separate all four platforms (local, opra, browserstack, saucelabs) to plugins
-* Get rid of dependency on global saucedUp-variable in the tests
 * Write tests
 * Get tests up and running for:
   * iPhone

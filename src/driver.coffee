@@ -88,7 +88,7 @@ runInstance = ({ setup, onDone, totalTestTimeout, url, verbose, wdArgs }, callba
 
       var tryLater = function(attempts) {
         setTimeout(function() {
-          if (window.saucedUp) {
+          if (window.document.readyState === 'complete') {
             var runner = mocha.run(function() {
               cb(combineResult(runner.suite));
             });
