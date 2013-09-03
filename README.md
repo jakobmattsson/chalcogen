@@ -21,7 +21,6 @@ Until if find time to write proper documentation, start with running `chalcogen 
 ToDo
 ----
 
-* Support running on a local webserver, not depending on opra
 * Support for browserstack
 * Separate all four platforms (local, opra, browserstack, saucelabs) to plugins
 * Write tests

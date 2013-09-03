@@ -57,7 +57,8 @@ if (argv.version) {
 
 if (argv.platforms) {
   console.log()
-  console.log("  local: Run test locally using an OPRA-server")
+  console.log("  local: Run test using local selenium browsers")
+  console.log("  opra: Run test using an OPRA-server and local selenium browsers")
   console.log("  saucelabs: Run tests on saucelabs.com")
   console.log()
   return;
@@ -65,7 +66,7 @@ if (argv.platforms) {
 
 nconf.argv().env('__').file('chalcogen-config', 'chalcogen.json').file('secret-config', 'config.json').file('package', 'package.json');
 
-if (argv.platform == 'local') {
+if (argv.platform == 'opra') {
   var localCore = require('../lib/runner-localOpra');
   localCore.run(wdMocha, {
     verbose: !nconf.get('chalcogen:silent'),
@@ -73,6 +74,16 @@ if (argv.platform == 'local') {
     path: nconf.get('chalcogen:path'),
     timeout: nconf.get('chalcogen:timeout'),
     opraSettings: nconf.get('opra')
+  }, function(err, res) {
+    process.exit(wdMocha.finalLog(err, res) ? 0 : 1)
+  });
+} else if (argv.platform == 'local') {
+  var localCore = require('../lib/runner-local');
+  localCore.run(wdMocha, {
+    verbose: !nconf.get('chalcogen:silent'),
+    browsers: _(nconf.get('chalcogen:environments')).chain().pluck('browserName').uniq().value(),
+    url: "http://" + nconf.get('chalcogen:domain') + nconf.get('chalcogen:path'),
+    timeout: nconf.get('chalcogen:timeout')
   }, function(err, res) {
     process.exit(wdMocha.finalLog(err, res) ? 0 : 1)
   });
