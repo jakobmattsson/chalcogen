@@ -30,10 +30,10 @@
     "underscore": "^1.5.1",
     "random-name": "^0.1.0",
     "saucelabs": "^0.1.0",
-    "runr": "^0.3.2",
+    "runr": "^0.4.3",
     "wd": "^0.1.0",
     "async": "^0.2.9",
-    "optimist": "^0.3.7"
+    "optimist": "^0.6.0"
   },
   "devDependencies": {
     "coffee-script": "^1.6.3",
