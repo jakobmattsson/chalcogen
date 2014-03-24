@@ -24,6 +24,20 @@ exports.finalLog = (err, res) ->
   !err? && res.allPassed
 
 
+exports.finalLog2 = (err, res) ->
+  console.log("Test errored", err) if err?
+  console.log()
+  (res?.results || []).forEach (x) -> exports.logResult2(x)
+  !err? && res.allPassed
+
+
+
+exports.logResult2 = (input) ->
+  run = input.passes + input.failures
+  skipped = input.testCount - input.passes - input.failures
+  prefix = if input.failures == 0 then 'PASSED' else 'FAILED'
+  console.log "#{prefix}: Ran #{run} tests (skipped #{skipped} of #{input.testCount}) in #{input.environment}. #{input.failures} failed."
+
 
 exports.logResult = (input) ->
   browserName = input.setup.browserName
