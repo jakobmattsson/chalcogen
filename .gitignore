@@ -1,9 +1,4 @@
 lib
-.*
 npm-debug.log
-
-!.bowerrc
-!.travis.yml
-!.gitignore
-!.npmignore
-
+node_modules
+*.sublime-workspace
