@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - "0.8"
-  - "0.9"
-  - "0.10"
-  - "0.11"
-branches:
-  only:
-    - master
+- '0.10'
+- '0.12'
+deploy:
+  provider: npm
+  email: jakob.mattsson@gmail.com
+  skip_cleanup: true
+  api_key:
+    secure: Qs8fkZp2tt61QnXCkFVq+cG90apfwZLG4kywy0cYsh6klvC7P4iXti9ONl1C9/hIu6S9WGvIarTULbXOwShVBsrage4v6p+TBU6UtizG9TE3OWTTAjcWiM7bvlV3cBxyyB6ynyZ07HC6ETGYfBcSuAy4xdgAdR6h37F9y7nNoLs=
+  on:
+  	branch: master
+    tags: true
+    repo: jakobmattsson/chalcogen
