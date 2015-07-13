@@ -1,6 +1,6 @@
 {
   "name": "chalcogen",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Runs mocha tests using selenium",
   "author": "Jakob Mattsson <jakob.mattsson@gmail.com> (jakobmattsson.se)",
   "main": "./lib/chalcogen.js",
